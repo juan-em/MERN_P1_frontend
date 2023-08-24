@@ -6,8 +6,8 @@ import {
 import {
   TextField,
   SelectField,
-  EditUserFormHeader,
-  SelectOptions,
+  EditFormHeader,
+  SelectRolesOptions,
   CheckBoxField,
 } from "../FormComponents";
 
@@ -79,7 +79,7 @@ const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
   return (
     <>
       <form className="form" onSubmit={(e) => e.preventDefault()} noValidate>
-        <EditUserFormHeader
+        <EditFormHeader
           title={formTitle}
           onSaveUser={handleSubmit(onSaveUser)}
           onDeleteUser={onDeleteUser}
@@ -89,7 +89,7 @@ const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
         <CheckBoxField inputObject={checkBoxInputObject} errors={errors} />
         <SelectField
           selectObject={selectInputObject}
-          options={SelectOptions(USERS_ROLES)}
+          options={SelectRolesOptions(USERS_ROLES)}
           errors={errors}
         />
       </form>

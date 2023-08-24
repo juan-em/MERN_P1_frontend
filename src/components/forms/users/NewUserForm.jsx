@@ -1,9 +1,8 @@
-import { DevTool } from "@hookform/devtools";
 import { USERS_ROLES, USER_PWD_REGEX, USER_REGEX } from "../../../constants/userConstants";
-import { TextField, SelectField, NewUserFormHeader, SelectOptions } from "../FormComponents";
+import { TextField, SelectField, NewFormHeader, SelectRolesOptions } from "../FormComponents";
 
 const NewUserForm = ({ form, onSubmit }) => {
-  const { register, control, handleSubmit, formState } = form
+  const { register, handleSubmit, formState } = form
   const { errors } = formState;
 
   const formTitle = "New User";
@@ -66,12 +65,12 @@ const NewUserForm = ({ form, onSubmit }) => {
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
-        <NewUserFormHeader title={formTitle} />
+        <NewFormHeader title={formTitle} />
         <TextField inputObject={usernameInputObject} errors={errors} />
         <TextField inputObject={passwordInputObject} errors={errors} />
         <SelectField
           selectObject={selectInputObject}
-          options={SelectOptions(USERS_ROLES)}
+          options={SelectRolesOptions(USERS_ROLES)}
           errors={errors}
         />
       </form>

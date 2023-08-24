@@ -14,7 +14,7 @@ const NotesTableRow = ({ noteId }) => {
 
   if (note) {
     const { formattedDate } = useTimeZone();
-    const handleEdit = () => navigate(`dash/notes/${noteId}`);
+    const handleEdit = () => navigate(`${noteId}`);
 
     const created = formattedDate(new Date(note.createdAt));
     const updated = formattedDate(new Date(note.updatedAt));

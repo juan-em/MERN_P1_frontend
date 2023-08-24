@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { usersAdapter } from "../../app/api/users/usersApiSlice";
 
-export const NewUserFormHeader = ({ title }) => {
+export const NewFormHeader = ({ title }) => {
   return (
     <div className="form__title-row">
       <h2>{title}</h2>
@@ -14,7 +15,7 @@ export const NewUserFormHeader = ({ title }) => {
   );
 };
 
-export const EditUserFormHeader = ({ title, onSaveUser, onDeleteUser }) => {
+export const EditFormHeader = ({ title, onSaveUser, onDeleteUser }) => {
   return (
     <div className="form__title-row">
       <h2>{title}</h2>
@@ -37,7 +38,7 @@ export const TextField = ({ inputObject, errors }) => {
   return (
     <>
       <label className="form__label" htmlFor={name}>
-        {label} <span className="nowrap">{description}</span>
+        {label} {description && <span className="nowrap">{description}</span>}
       </label>
       <input
         className={`form__input ${validClass}`}
@@ -83,10 +84,17 @@ export const SelectField = ({ selectObject, options, errors }) => {
   );
 };
 
-export const SelectOptions = (objectOptions) =>
+export const SelectRolesOptions = (objectOptions) =>
   Object.values(objectOptions).map((role) => (
     <option key={role} value={role}>
       {role}
+    </option>
+  ));
+
+  export const SelectUsersOptions = (objectOptions) =>
+  Object.values(objectOptions).map((user) => (
+    <option key={user.id} value={user.id}>
+      {user.username}
     </option>
   ));
 
@@ -98,7 +106,7 @@ export const CheckBoxField = ({ inputObject, errors }) => {
     <>
       <label
         className="form__label form__checkbox-container"
-        htmlFor="user-active"
+        htmlFor={name}
       >
         {label} {description && <span className="nowrap">{description}</span>}
         <input

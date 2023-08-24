@@ -6,6 +6,7 @@ import { selectNoteById } from "../../../app/api/notes/notesApiSelectors";
 import { useSelector } from "react-redux";
 
 const NotesTableRow = ({ noteId }) => {
+  const { formattedDate } = useTimeZone();
   const note = useSelector((state) => selectNoteById(state, noteId));
 
   const navigate = useNavigate();
@@ -13,9 +14,7 @@ const NotesTableRow = ({ noteId }) => {
   let content;
 
   if (note) {
-    const { formattedDate } = useTimeZone();
     const handleEdit = () => navigate(`/dash/notes/${noteId}`);
-
     const created = formattedDate(new Date(note.createdAt));
     const updated = formattedDate(new Date(note.updatedAt));
 

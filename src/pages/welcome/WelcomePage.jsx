@@ -3,17 +3,15 @@ import useTimeZone from "../../hooks/useTimeZone/useTimeZone";
 
 const WelcomePage = () => {
   const { formattedDate } = useTimeZone();
-  const currentDate = formattedDate(new Date())
+  const currentDate = formattedDate(new Date());
   return (
     <section className="welcome">
       <p>{currentDate}</p>
       <h1>Welcome!</h1>
-      <p>
-        <Link to="/dash/notes">View techNotes</Link>
-      </p>
-      <p>
-        <Link to="/dash/users">View User Settings</Link>
-      </p>
+      <p> <Link to="/dash/notes">View techNotes</Link> </p>
+      <p> <Link to="/dash/notes/new">Add New techNote</Link> </p>
+      <p> <Link to="/dash/users">View User Settings</Link> </p>
+      <p> <Link to="/dash/users/new">Add New User</Link> </p>
     </section>
   );
 };

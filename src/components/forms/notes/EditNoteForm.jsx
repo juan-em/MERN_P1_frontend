@@ -16,8 +16,10 @@ const EditNoteForm = ({ form, onSaveNote, onDeleteNote }) => {
   const { formattedDate } = useTimeZone();
 
   const formTitle = `Edit Note #${getValues("ticket")}`;
-  const created = getValues("createdAt") && formattedDate(new Date(getValues("createdAt")));
-  const updated = getValues("updatedAt") &&formattedDate(new Date(getValues("updatedAt")));
+  const created =
+    getValues("createdAt") && formattedDate(new Date(getValues("createdAt")));
+  const updated =
+    getValues("updatedAt") && formattedDate(new Date(getValues("updatedAt")));
 
   const titleInputObjects = {
     label: "Title:",
@@ -71,39 +73,44 @@ const EditNoteForm = ({ form, onSaveNote, onDeleteNote }) => {
 
   return (
     <>
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
-        <EditFormHeader
-          title={formTitle}
-          onSave={handleSubmit(onSaveNote)}
-          onDelete={onDeleteNote}
-        />
-        <TextField inputObject={titleInputObjects} errors={errors} />
-        <TextField inputObject={textInputObjects} errors={errors} />
-        <div className="form__row">
-          <div className="form__divider">
-            <CheckBoxField inputObject={checkBoxInputObject} errors={errors} />
-            <SelectField
-              selectObject={selectUsersInputObject}
-              options={SelectUsersOptions(users)}
-              errors={errors}
-            />
+      {users ? (
+        <form className="form" onSubmit={(e) => e.preventDefault()}>
+          <EditFormHeader
+            title={formTitle}
+            onSave={handleSubmit(onSaveNote)}
+            onDelete={onDeleteNote}
+          />
+          <TextField inputObject={titleInputObjects} errors={errors} />
+          <TextField inputObject={textInputObjects} errors={errors} />
+          <div className="form__row">
+            <div className="form__divider">
+              <CheckBoxField
+                inputObject={checkBoxInputObject}
+                errors={errors}
+              />
+              <SelectField
+                selectObject={selectUsersInputObject}
+                options={SelectUsersOptions(users)}
+                errors={errors}
+              />
+            </div>
+            <div className="form__divider">
+              <p className="form__created">
+                Created:
+                <br />
+                {created}
+              </p>
+              <p className="form__updated">
+                Updated:
+                <br />
+                {updated}
+              </p>
+            </div>
           </div>
-          <div className="form__divider">
-            <p className="form__created">
-              Created:
-              <br />
-              {created}
-            </p>
-            <p className="form__updated">
-              Updated:
-              <br />
-              {updated}
-            </p>
-          </div>
-        </div>
-      </form>
-
-      {/* <p className={errClass}>{errContent}</p> */}
+        </form>
+      ) : (
+        <p>loading...</p>
+      )}
     </>
   );
 };

@@ -9,7 +9,7 @@ import {
   CheckBoxField,
 } from "../FormComponents";
 
-const EditNoteForm = ({ form, onSaveNote, onDeleteNote }) => {
+const NoteEditForm = ({ form, onSaveNote, onDeleteNote }) => {
   const { register, handleSubmit, formState, getValues } = form;
   const { errors } = formState;
   const users = useSelector(selectAllUsers);
@@ -115,4 +115,4 @@ const EditNoteForm = ({ form, onSaveNote, onDeleteNote }) => {
   );
 };
 
-export default EditNoteForm;
+export default NoteEditForm;

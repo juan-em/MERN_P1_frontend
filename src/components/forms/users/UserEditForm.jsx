@@ -11,7 +11,7 @@ import {
   CheckBoxField,
 } from "../FormComponents";
 
-const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
+const UserEditForm = ({ form, onSaveUser, onDeleteUser }) => {
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
@@ -96,4 +96,4 @@ const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
   );
 };
 
-export default EditUserForm;
+export default UserEditForm;

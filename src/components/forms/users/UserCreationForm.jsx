@@ -1,7 +1,7 @@
 import { USERS_ROLES, USER_PWD_REGEX, USER_REGEX } from "../../../constants/userConstants";
 import { TextField, SelectField, NewFormHeader, SelectRolesOptions } from "../FormComponents";
 
-const NewUserForm = ({ form, onSubmit }) => {
+const UserCreationForm = ({ form, onSubmit }) => {
   const { register, handleSubmit, formState } = form
   const { errors } = formState;
 
@@ -78,4 +78,4 @@ const NewUserForm = ({ form, onSubmit }) => {
   );
 };
 
-export default NewUserForm;
+export default UserCreationForm;

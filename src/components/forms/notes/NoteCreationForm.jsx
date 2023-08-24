@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectAllUsers } from "../../../app/api/users/usersApiSelectors";
 import { NewFormHeader, TextField, SelectField, SelectUsersOptions} from "../FormComponents";
 
-const NewNoteForm = ({ form, onSubmit }) => {
+const NoteCreationForm = ({ form, onSubmit }) => {
   const { register, handleSubmit, formState } = form;
   const { errors } = formState;
   const users = useSelector(selectAllUsers)
@@ -65,4 +65,4 @@ const NewNoteForm = ({ form, onSubmit }) => {
   );
 };
 
-export default NewNoteForm;
+export default NoteCreationForm;

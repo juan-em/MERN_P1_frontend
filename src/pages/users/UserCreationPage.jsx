@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAddNewUserMutation } from "../../app/api/users/usersApiSlice";
-import NewUserForm from "../../components/forms/users/NewUserForm";
+import UserCreationForm from "../../components/forms/users/UserCreationForm";
 
 const UserCreationPage = () => {
   const [addNewUser, { isLoading, isSuccess, isError, error }] = useAddNewUserMutation();
@@ -25,7 +25,7 @@ const UserCreationPage = () => {
   return (
     <>
       {isError && <p className="errmsg">{error?.data?.message}</p>}
-      <NewUserForm form={form} onSubmit={onSaveUserClicked} />
+      <UserCreationForm form={form} onSubmit={onSaveUserClicked} />
       {isLoading && <p>Saving...</p>}
     </>
   );

@@ -8,7 +8,7 @@ import {
   useDeleteUserMutation,
 } from "../../app/api/users/usersApiSlice";
 import { selectUserById } from "../../app/api/users/usersApiSelectors";
-import EditUserForm from "../../components/forms/users/EditUserForm";
+import UserEditForm from "../../components/forms/users/UserEditForm";
 
 const UserEditPage = () => {
   const [
@@ -62,7 +62,7 @@ const UserEditPage = () => {
         <>
           {isUpdateError && <p className="errmsg">{updateError?.data?.message}</p>}
           {isDeleteError && <p className="errmsg">{deleteError?.data?.message}</p>}
-          <EditUserForm
+          <UserEditForm
             form={form}
             onSaveUser={onSaveUser}
             onDeleteUser={onDeleteUser}

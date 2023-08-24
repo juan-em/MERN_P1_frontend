@@ -8,7 +8,7 @@ import {
 } from "../../app/api/notes/notesApiSlice";
 import { selectNoteById } from "../../app/api/notes/notesApiSelectors";
 
-import EditNoteForm from "../../components/forms/notes/EditNoteForm";
+import NoteEditForm from "../../components/forms/notes/NoteEditForm";
 
 const NoteEditPage = () => {
   const [
@@ -57,7 +57,7 @@ const NoteEditPage = () => {
       <>
        {isUpdateError && <p className="errmsg">{updateError?.data?.message}</p>}
        {isDeleteError && <p className="errmsg">{deleteError?.data?.message}</p>}
-       <EditNoteForm
+       <NoteEditForm
          form={form}
          onSaveNote={onSaveNote}
          onDeleteNote={onDeleteNote}

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAddNewNoteMutation } from "../../app/api/notes/notesApiSlice";
-import NewNoteForm from "../../components/forms/notes/NewNoteForm";
+import NoteCreationForm from "../../components/forms/notes/NoteCreationForm";
 
 const NoteCreationPage = () => {
   const [addNewNote, { isLoading, isSuccess, isError, error }] =
@@ -26,7 +26,7 @@ const NoteCreationPage = () => {
   return (
     <>
       {isError && <p className="errmsg">{error?.data?.message}</p>}
-      <NewNoteForm form={form} onSubmit={onSaveNoteClicked} />
+      <NoteCreationForm form={form} onSubmit={onSaveNoteClicked} />
       {isLoading && <p>Saving...</p>}
     </>
   );

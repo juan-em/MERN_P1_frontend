@@ -60,8 +60,8 @@ const UserEditPage = () => {
     <>
       {userSelected ? (
         <>
-          {isUpdateError && <p>{updateError?.data?.message}</p>}
-          {isDeleteError && <p>{deleteError?.data?.message}</p>}
+          {isUpdateError && <p className="errmsg">{updateError?.data?.message}</p>}
+          {isDeleteError && <p className="errmsg">{deleteError?.data?.message}</p>}
           <EditUserForm
             form={form}
             onSaveUser={onSaveUser}

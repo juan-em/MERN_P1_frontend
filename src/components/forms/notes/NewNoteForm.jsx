@@ -53,7 +53,7 @@ const NewNoteForm = ({ form, onSubmit }) => {
 
   return (
     <>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
         <NewFormHeader title={formTitle} />
         <TextField inputObject={titleInputObjects} errors={errors}/>
         <TextField inputObject={textInputObjects} errors={errors}/>

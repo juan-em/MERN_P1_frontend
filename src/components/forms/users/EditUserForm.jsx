@@ -12,7 +12,7 @@ import {
 } from "../FormComponents";
 
 const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
-  const { register, control, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState } = form;
   const { errors } = formState;
 
   const formTitle = "Edit User";
@@ -70,7 +70,6 @@ const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
   const checkBoxInputObject = {
     label: "ACTIVE:",
     name: "active",
-    type: "checkbox",
     register: {
       ...register("active"),
     },
@@ -81,8 +80,8 @@ const EditUserForm = ({ form, onSaveUser, onDeleteUser }) => {
       <form className="form" onSubmit={(e) => e.preventDefault()} noValidate>
         <EditFormHeader
           title={formTitle}
-          onSaveUser={handleSubmit(onSaveUser)}
-          onDeleteUser={onDeleteUser}
+          onSave={handleSubmit(onSaveUser)}
+          onDelete={onDeleteUser}
         />
         <TextField inputObject={usernameInputObject} errors={errors} />
         <TextField inputObject={passwordInputObject} errors={errors} />

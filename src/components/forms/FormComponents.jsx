@@ -15,15 +15,15 @@ export const NewFormHeader = ({ title }) => {
   );
 };
 
-export const EditFormHeader = ({ title, onSaveUser, onDeleteUser }) => {
+export const EditFormHeader = ({ title, onSave, onDelete }) => {
   return (
     <div className="form__title-row">
       <h2>{title}</h2>
       <div className="form__action-buttons">
-        <button className="icon-button" title="Save" onClick={onSaveUser}>
+        <button className="icon-button" title="Save" onClick={onSave}>
           <FontAwesomeIcon icon={faSave} />
         </button>
-        <button className="icon-button" title="Delete" onClick={onDeleteUser}>
+        <button className="icon-button" title="Delete" onClick={onDelete}>
           <FontAwesomeIcon icon={faTrashCan} />
         </button>
       </div>
@@ -113,7 +113,7 @@ export const CheckBoxField = ({ inputObject, errors }) => {
           className="form__checkbox"
           id={name}
           name={name}
-          type={type}
+          type="checkbox"
           {...register}
         />
       </label>

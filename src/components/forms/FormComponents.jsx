@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { usersAdapter } from "../../app/api/users/usersApiSlice";
+
 
 export const NewFormHeader = ({ title }) => {
   return (
@@ -35,6 +35,7 @@ export const TextField = ({ inputObject, errors }) => {
   const { label, name, type, description, register } = inputObject;
   const isValid = !errors[name]?.message && true;
   const validClass = isValid ? "" : "form__input--incomplete";
+
   return (
     <>
       <label className="form__label" htmlFor={name}>
@@ -91,7 +92,7 @@ export const SelectRolesOptions = (objectOptions) =>
     </option>
   ));
 
-  export const SelectUsersOptions = (objectOptions) =>
+export const SelectUsersOptions = (objectOptions) =>
   Object.values(objectOptions).map((user) => (
     <option key={user.id} value={user.id}>
       {user.username}
@@ -104,10 +105,7 @@ export const CheckBoxField = ({ inputObject, errors }) => {
 
   return (
     <>
-      <label
-        className="form__label form__checkbox-container"
-        htmlFor={name}
-      >
+      <label className="form__label form__checkbox-container" htmlFor={name}>
         {label} {description && <span className="nowrap">{description}</span>}
         <input
           className="form__checkbox"

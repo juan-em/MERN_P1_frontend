@@ -8,7 +8,7 @@ const NoteCreationPage = () => {
   const [addNewNote, { isLoading, isSuccess, isError, error }] =
     useAddNewNoteMutation();
   const form = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSaveNoteClicked = async (data) => {
     await addNewNote(data);

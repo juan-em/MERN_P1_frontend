@@ -1,5 +1,5 @@
 import { useGetUsersQuery } from "../../app/api/users/usersApiSlice";
-import Error from "../../components/errors/error";
+import { Error } from "../../components/errors/error";
 import UsersTable from "../../components/tables/users/UsersTable";
 
 const UsersListPage = () => {
@@ -15,9 +15,10 @@ const UsersListPage = () => {
     refetchOnMountOrArgChange: true, // Perform a new query when the component is remounted or when query arguments change.
   });
 
+
   let content;
   if (isLoading) content = <p>Loading...</p>;
-  if (isError) content = <Error error={error} />;
+  if (isError) content = <Error error={error} />; //-----> option 1
   if (isSuccess) content = <UsersTable ids={users.ids} />;
 
   return content;

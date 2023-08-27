@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { useRef } from "react";
+import usePersist from "../../../hooks/usePersist/usePersist";
 import { TextField } from "../FormComponents";
+
 
 const LoginForm = ({ form, onSubmit }) => {
   const { register, handleSubmit, formState, setFocus } = form;
   const { errors } = formState;
+  const [persist, setPersist] = usePersist()
+
+  const handleToggle = () => setPersist(prev => !prev)
 
   const usernameInputObject = {
     label: "Username:",
@@ -34,6 +38,8 @@ const LoginForm = ({ form, onSubmit }) => {
     },
   };
 
+
+
   //just to focus the field username
   useEffect(()=>{
     setFocus('username')
@@ -43,6 +49,16 @@ const LoginForm = ({ form, onSubmit }) => {
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <TextField inputObject={usernameInputObject} errors={errors} />
       <TextField inputObject={passwordInputObject} errors={errors} />
+      <label htmlFor="persist" className="form__persist">
+        <input
+          type="checkbox"
+          className="form__checkbox"
+          id="persist"
+          onChange={handleToggle}
+          checked={persist}
+        />
+        Trust this device
+      </label>
       <button className="form__submit-button">Sign In</button>
     </form>
   );

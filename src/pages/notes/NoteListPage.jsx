@@ -9,8 +9,8 @@ const NoteListPage = () => {
     isSuccess,
     isError,
     error
-} = useGetNotesQuery({
-  pollingInterval: 15000, // Perform a new query every 60 seconds to keep the data updated.
+} = useGetNotesQuery('notesList',{
+  pollingInterval: 15000, // Perform a new query every 15 seconds to keep the data updated.
   refetchOnFocus: true, // Perform a new query when the user refocuses on the page.
   refetchOnMountOrArgChange: true, // Perform a new query when the component is remounted or when query arguments change.
 });

@@ -8,6 +8,7 @@ import HomePage from "../pages/home/HomePage";
 import LoginPage from "../pages/login/LoginPage";
 
 //Protected Routes
+import PersistLogin from "../app/PersistSession/PersistLogin";
 import Prefetch from "../app/Prefetch";
 import WelcomePage from "../pages/welcome/WelcomePage";
 import UsersListPage from "../pages/users/UsersListPage";
@@ -23,21 +24,23 @@ const Router = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route element={<Prefetch />}>
-          <Route path="dash" element={<DashLayout />}>
-            <Route index element={<WelcomePage />} />
-            <Route path="users">
-              <Route index element={<UsersListPage />} />
-              <Route path="new" element={<UserCreationPage />} />
-              <Route path=":id" element={<UserEditPage />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<Prefetch />}>
+            <Route path="dash" element={<DashLayout />}>
+              <Route index element={<WelcomePage />} />
+              <Route path="users">
+                <Route index element={<UsersListPage />} />
+                <Route path="new" element={<UserCreationPage />} />
+                <Route path=":id" element={<UserEditPage />} />
+              </Route>
+              <Route path="notes">
+                <Route index element={<NoteListPage />} />
+                <Route path="new" element={<NoteCreationPage />} />
+                <Route path=":id" element={<NoteEditPage />} />
+              </Route>
             </Route>
-            <Route path="notes">
-              <Route index element={<NoteListPage />} />
-              <Route path="new" element={<NoteCreationPage />} />
-              <Route path=":id" element={<NoteEditPage />} />
-            </Route>
+            {/*End Dash*/}
           </Route>
-          {/*End Dash*/}
         </Route>
       </Route>
     </Routes>

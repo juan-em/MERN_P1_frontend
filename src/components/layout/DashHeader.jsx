@@ -2,29 +2,36 @@ import { useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useSendLogoutMutation } from "../../app/api/auth/authApiSlice";
 import { Error } from "../errors/Error";
-import { LogoutButton } from "../buttons/LogoutButton"
+import { LogoutButton } from "../buttons/LogoutButton";
 
-const DASH_REGEX = /^\/dash(\/)?$/
-const NOTES_REGEX = /^\/dash\/notes(\/)?$/
-const USERS_REGEX = /^\/dash\/users(\/)?$/
+const DASH_REGEX = /^\/dash(\/)?$/;
+const NOTES_REGEX = /^\/dash\/notes(\/)?$/;
+const USERS_REGEX = /^\/dash\/users(\/)?$/;
 
 const DashHeader = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [sendLogout, { isLoading, isSuccess, isError, error }] =
+    useSendLogoutMutation();
 
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
-  const [ sendLogout, { isLoading, isSuccess, isError, error } ] = useSendLogoutMutation()
+  const onLogoutClicked = () => sendLogout();
+  if (isError) return <Error error={error} />;
 
-  const onLogoutClicked = () => sendLogout()
-  if (isError) return <Error error={error} />
-
-  let dashClass = null
-  if (!DASH_REGEX.test(pathname) && !NOTES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)) {
-    dashClass = "dash-header__container--small"
+  let dashClass = null;
+  if (
+    !DASH_REGEX.test(pathname) &&
+    !NOTES_REGEX.test(pathname) &&
+    !USERS_REGEX.test(pathname)
+  ) {
+    dashClass = "dash-header__container--small";
   }
 
-  useEffect(()=>{
-    if(isSuccess) {console.log('hola'); navigate('/')}
-  }, [isSuccess])
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("hola");
+      navigate("/");
+    }
+  }, [isSuccess]);
 
   return (
     <header className="dash-header">
@@ -34,7 +41,7 @@ const DashHeader = () => {
         </Link>
         <nav className="dash-header__nav">
           {isLoading && <p>logging out...</p>}
-          <LogoutButton onLogout={onLogoutClicked}/>
+          <LogoutButton onLogout={onLogoutClicked} />
         </nav>
       </div>
     </header>

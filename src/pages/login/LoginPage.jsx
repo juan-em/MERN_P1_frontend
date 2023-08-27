@@ -17,6 +17,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     // await login(data);
+    delete data.persist
     const { accessToken } = await login(data).unwrap();
     dispatch(setCredentials({ accessToken }));
   };

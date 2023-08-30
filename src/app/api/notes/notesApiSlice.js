@@ -8,7 +8,10 @@ export const initialState = notesAdapter.getInitialState();
 export const notesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getNotes: builder.query({
-      query: () => "/notes",
+      query: (arg) => ({
+        url: `/notes`,
+        params: { user: arg?.user }
+      }),
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },

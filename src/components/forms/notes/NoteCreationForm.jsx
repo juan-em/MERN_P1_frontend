@@ -3,6 +3,7 @@ import { selectAllUsers } from "../../../app/api/users/usersApiSelectors";
 import {
   NewFormHeader,
   TextField,
+  TextAreaField,
   SelectField,
   SelectUsersOptions,
 } from "../FormComponents";
@@ -32,7 +33,6 @@ const NoteCreationForm = ({ form, onSubmit }) => {
   const textInputObjects = {
     label: "Text:",
     name: "text",
-    type: "text",
     register: {
       ...register("text", {
         required: {
@@ -70,7 +70,7 @@ const NoteCreationForm = ({ form, onSubmit }) => {
     <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
       <NewFormHeader title={formTitle} />
       <TextField inputObject={titleInputObjects} errors={errors} />
-      <TextField inputObject={textInputObjects} errors={errors} />
+      <TextAreaField inputObject={textInputObjects} errors={errors} />
       <SelectField
         selectObject={selectUsersInputObject}
         options={SelectUsersOptions(users)}

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
+//Form's components specifically for react-hook-form
 
 export const NewFormHeader = ({ title }) => {
   return (
@@ -52,6 +53,28 @@ export const TextField = ({ inputObject, errors }) => {
     </>
   );
 };
+
+export const TextAreaField = ({ inputObject, errors}) => {
+  const { label, name, description, register } = inputObject;
+  const isValid = !errors[name]?.message && true;
+  const validClass = isValid ? "" : "form__input--incomplete";
+
+  return (
+    <>
+      <label className="form__label" htmlFor={name}>
+        {label} {description && <span className="nowrap">{description}</span>}
+      </label>
+      <textarea
+        className={`form__input form__input--text ${validClass}`}
+        autoComplete="off"
+        id={name}
+        {...register}
+      />
+      {!isValid && <p className="error">{errors[name]?.message}</p>}
+    </>
+  );
+
+}
 
 export const SelectField = ({ selectObject, options, errors }) => {
   const {

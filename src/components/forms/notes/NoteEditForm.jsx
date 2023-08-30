@@ -4,6 +4,7 @@ import { selectAllUsers } from "../../../app/api/users/usersApiSelectors";
 import {
   EditFormHeader,
   TextField,
+  TextAreaField,
   SelectField,
   SelectUsersOptions,
   CheckBoxField,
@@ -38,7 +39,6 @@ const NoteEditForm = ({ form, onSaveNote, onDeleteNote }) => {
   const textInputObjects = {
     label: "Text:",
     name: "text",
-    type: "text",
     register: {
       ...register("text", {
         required: {
@@ -81,7 +81,7 @@ const NoteEditForm = ({ form, onSaveNote, onDeleteNote }) => {
             onDelete={onDeleteNote}
           />
           <TextField inputObject={titleInputObjects} errors={errors} />
-          <TextField inputObject={textInputObjects} errors={errors} />
+          <TextAreaField inputObject={textInputObjects} errors={errors} />
           <div className="form__row">
             <div className="form__divider">
               <CheckBoxField

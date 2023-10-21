@@ -6,16 +6,15 @@ const HomePage = () => {
     <section className="public">
       <header>
         <h1>
-          Welcome to <span className="nowrap">Dan D. Repairs!</span>
+          Welcome to <span className="nowrap">Jem's repair</span>
         </h1>
       </header>
       <main className="public__main">
         <p>
-          Located in Beautiful Downtown Foo City, Dan D. Repairs provides a
-          trained staff ready to meet your tech repair needs.
+          Located in your heart
         </p>
         <address className="public__addr">
-          Dan D. Repairs
+          Jem's actions
           <br />
           555 Foo Drive
           <br />
@@ -24,10 +23,10 @@ const HomePage = () => {
           <a href="tel:+15555555555">(555) 555-5555</a>
         </address>
         <br />
-        <p>Owner: Dan Davidson</p>
+        <p>Owner:Jem</p>
       </main>
       <footer>
-        <Link to="/login">Employee Login</Link>
+        <Link to="/login">Login</Link>
       </footer>
     </section>
   );

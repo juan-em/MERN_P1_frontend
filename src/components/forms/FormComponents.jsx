@@ -24,9 +24,10 @@ export const EditFormHeader = ({ title, onSave, onDelete }) => {
         <button className="icon-button" title="Save" onClick={onSave}>
           <FontAwesomeIcon icon={faSave} />
         </button>
-        <button className="icon-button" title="Delete" onClick={onDelete}>
+        {onDelete && <button className="icon-button" title="Delete" onClick={onDelete}>
           <FontAwesomeIcon icon={faTrashCan} />
-        </button>
+        </button>}
+        
       </div>
     </div>
   );

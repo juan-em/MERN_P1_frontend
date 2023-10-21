@@ -18,6 +18,9 @@ import NoteListPage from "../pages/notes/NoteListPage";
 import NoteCreationPage from "../pages/notes/NoteCreationPage";
 import NoteEditPage from "../pages/notes/NoteEditPage";
 
+import { USERS_ROLES } from "../constants/userConstants";
+import RequireAuth from "../app/RequiredAuth";
+
 const Router = () => {
   return (
     <Routes>
@@ -25,21 +28,26 @@ const Router = () => {
         <Route index element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route element={<PersistLogin />}>
-          <Route element={<Prefetch />}>
-            <Route path="dash" element={<DashLayout />}>
-              <Route index element={<WelcomePage />} />
-              <Route path="users">
-                <Route index element={<UsersListPage />} />
-                <Route path="new" element={<UserCreationPage />} />
-                <Route path=":id" element={<UserEditPage />} />
+          <Route element={<RequireAuth allowedRoles={[...Object.values(USERS_ROLES)]} />}>
+            <Route element={<Prefetch />}>
+              <Route path="dash" element={<DashLayout />}>
+                <Route index element={<WelcomePage />} />
+                <Route element={<RequireAuth allowedRoles={[USERS_ROLES.Admin, USERS_ROLES.Manager]} />}>
+                  <Route path="users">
+                    <Route index element={<UsersListPage />} />
+                    <Route path="new" element={<UserCreationPage />} />
+                    <Route path=":id" element={<UserEditPage />} />
+                  </Route>
+                </Route>
+
+                <Route path="notes">
+                  <Route index element={<NoteListPage />} />
+                  <Route path="new" element={<NoteCreationPage />} />
+                  <Route path=":id" element={<NoteEditPage />} />
+                </Route>
               </Route>
-              <Route path="notes">
-                <Route index element={<NoteListPage />} />
-                <Route path="new" element={<NoteCreationPage />} />
-                <Route path=":id" element={<NoteEditPage />} />
-              </Route>
+              {/*End Dash*/}
             </Route>
-            {/*End Dash*/}
           </Route>
         </Route>
       </Route>

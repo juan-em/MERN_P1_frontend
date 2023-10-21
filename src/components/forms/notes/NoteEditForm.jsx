@@ -78,7 +78,7 @@ const NoteEditForm = ({ form, onSaveNote, onDeleteNote }) => {
           <EditFormHeader
             title={formTitle}
             onSave={handleSubmit(onSaveNote)}
-            onDelete={onDeleteNote}
+            {...(onDeleteNote ? { onDelete: onDeleteNote } : {})}
           />
           <TextField inputObject={titleInputObjects} errors={errors} />
           <TextAreaField inputObject={textInputObjects} errors={errors} />

@@ -1,5 +1,5 @@
 import { useGetNotesQuery } from "../../app/api/notes/notesApiSlice"
-import { Error } from "../../components/errors/error"
+import { Error } from "../../components/errors/Error"
 import NotesTable from "../../components/tables/notes/NotesTable"
 import useAuth from "../../hooks/useAuth/useAuth"
 

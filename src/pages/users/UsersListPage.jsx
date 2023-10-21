@@ -1,5 +1,5 @@
 import { useGetUsersQuery } from "../../app/api/users/usersApiSlice";
-import { Error } from "../../components/errors/error";
+import { Error } from "../../components/errors/Error";
 import UsersTable from "../../components/tables/users/UsersTable";
 
 const UsersListPage = () => {

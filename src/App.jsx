@@ -1,4 +1,4 @@
-import Router from "./routes/routes";
+import Router from "./routes/Routes.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { store } from "./app/store";

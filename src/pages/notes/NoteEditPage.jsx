@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import useAuth from "../../hooks/useAuth/useAuth";
 import {
   useUpdateNoteMutation,
   useDeleteNoteMutation,
@@ -11,6 +12,7 @@ import { selectNoteById } from "../../app/api/notes/notesApiSelectors";
 import NoteEditForm from "../../components/forms/notes/NoteEditForm";
 
 const NoteEditPage = () => {
+  const { isManager, isAdmin } = useAuth()
   const [
     updateNote,
     {
@@ -58,10 +60,10 @@ const NoteEditPage = () => {
        {isUpdateError && <p className="errmsg">{updateError?.data?.message}</p>}
        {isDeleteError && <p className="errmsg">{deleteError?.data?.message}</p>}
        <NoteEditForm
-         form={form}
-         onSaveNote={onSaveNote}
-         onDeleteNote={onDeleteNote}
-       />
+          form={form}
+          onSaveNote={onSaveNote}
+          {...(isManager || isAdmin ? { onDeleteNote: onDeleteNote } : {})}
+        />
        {isUpdateLoading && <p>Updating...</p>}
       </>
     :(
